@@ -6,5 +6,5 @@ token=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
 
 git add .
 git commit -m "Committing"
-https://$username:$token@Ansible.biz/file.git --all
+git push https://$username:$token@Ansible.biz/file.git --all
 
