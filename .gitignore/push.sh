@@ -3,4 +3,4 @@
 
 git add .
 git commit -m "Committing"
-git push https://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@github.com/buvly/Ansible.git
+git push https://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@github.com/buvly/Ansible.git
