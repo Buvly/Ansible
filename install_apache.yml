@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: Update Repo Index
+    apt:
+      update_cache: true
+    
+  - name: Install Apache2 Package 
+    apt:
+      name: apache2
+      state: latest
