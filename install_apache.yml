@@ -7,8 +7,33 @@
   - name: Update Repo Index
     apt:
       update_cache: true
-    
-  - name: Install Apache2 Package 
+    when: ansible_distribution == "Ubuntu"
+
+  - name: Install Apache2 Package
     apt:
       name: apache2
       state: latest
+    when: ansible_distribution == "Ubuntu"
+
+ - name: add php support for apache
+    apt:
+      name: libapache2-mod-php
+      state: latest
+    when: ansible_distribution == "Ubuntu"
+
+  - name: Update Repo Index
+    dnf:
+      update_cache: true
+    when: ansible_distribution == "CentOS"
+
+  - name: Install Apache2 Package
+    dnf:
+      name: httpd
+      state: latest
+    when: ansible_distribution == "CentOS"
+
+ - name: add php support for apache
+    dnf:
+      name: php
+      state: latest
+    when: ansible_distribution == "CentOS"
