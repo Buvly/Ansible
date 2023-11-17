@@ -5,18 +5,29 @@
   pre_tasks:    
 
   - name: install updates (CentOS)
-    tags: always  --> regardless to which tags I'm targeting this should always run
+    tags: always
     dnf:
-      update_only: yes
       update_cache: yes
+    changed_when: false
     when: ansible_distribution == "CentOS"
 
   - name: install updates (Ubuntu)
     tags: always
     apt:
-      upgrade: dist
       update_cache: yes
+    changed_when: false
     when: ansible_distribution == "Ubuntu"
+
+ 
+- hosts: all
+  become: true
+  tasks:
+
+  - name: add ssh key for simone
+    tags: always
+    authorized_key:
+      user: simone
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBP7Dvlk3hb5KCzgruV1LaShaTu5Y+LLY/zXwFoPhwVE ansible"
 
 
 - hosts: workstations
